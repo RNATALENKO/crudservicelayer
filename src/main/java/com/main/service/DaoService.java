@@ -11,7 +11,13 @@ import com.main.student.Student;
 public interface DaoService {
 	
 	public List<Student> fetchStudents();
+	
+	public StudentDto fetchStudent(int id);
 
-	public int addStudent(StudentDto student); 
+	public int addStudent(StudentDto student);
+
+	int updateStudent(StudentDto studentDto); 
+	
+	
 
 }

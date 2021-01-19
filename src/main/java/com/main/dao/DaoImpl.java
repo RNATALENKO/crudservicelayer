@@ -22,7 +22,19 @@ public class DaoImpl implements Dao {
 
 		return list;
 	}
+	
+	
+	@Override
+	public Student fetchStudent(int id) {
+		
+		String sqlString = "Select * From info.students WHERE id=?";
+		
+		Student student = JdbcTemplate.queryForObject(sqlString, new StudentRowMapper(), id);
+		
+		return student;
+	}
 
+	
 	@Override
 	public int addStudent(StudentDto student) {
 		
@@ -32,4 +44,27 @@ public class DaoImpl implements Dao {
 		return num; 
 	}
 
+
+	@Override
+	public int updateStudent(Student student) {
+		String sqlString = "Update info.students SET name=?, school=? WHERE id=?";
+		
+		Object[] args = {student.getName(), student.getSchool(), student.getId()}; 
+		
+		int recordsUpdated = JdbcTemplate.update(sqlString, args);
+		
+		return recordsUpdated;
+	}
+
+
+
+
+
+
+
+
+
+
+
+	
 }

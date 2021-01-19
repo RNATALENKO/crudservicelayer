@@ -9,8 +9,14 @@ public interface Dao {
 	
 	
 	public List<Student> fetchStudents();
+	
+	public Student fetchStudent(int id); 
 
 	public int addStudent(StudentDto student); 
+
+	int updateStudent(Student student);
+	
+	
 	
 
 }

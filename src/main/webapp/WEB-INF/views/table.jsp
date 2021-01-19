@@ -31,10 +31,9 @@
 			<td style="padding:30px; border:1px solid black;">${student.id}</td>
 			<td style="padding:30px; border:1px solid black;">${student.name}</td>
 			<td style="padding:30px; border:1px solid black;">${student.school}</td>
-			<td style="padding:30px;"><a>update</a><td>
+			<td style="padding:30px;"><a href="http://localhost:8080/SpringJDBCmaincrud/updateStudent?userId=${student.id}" >update</a><td>
 			<td style="padding:30px;"><a>delete</a><td>
-		</tr>
-			
+		</tr>	
 		</c:forEach>
 		
 		</form:form>
