@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.main.daohelperservice.DaoHelperService;
+import com.main.daohelperservice.DaoHelperServiceImpl;
 import com.main.dto.StudentDto;
 import com.main.service.DaoService;
 import com.main.service.DaoServiceImpl;
@@ -27,6 +29,9 @@ public class HomeControllerNoDao {
 	
 	@Autowired
 	private DaoService DaoServiceImpl; 
+	
+	@Autowired 
+	private DaoHelperServiceImpl DaoHelperServiceImpl; 
 	
 	
 	/*
@@ -81,7 +86,7 @@ public class HomeControllerNoDao {
 		}
 		
 
-		return "redirect:/"; //to redirect the page
+		return "redirect:/"; //to redirect the page, automatically refreshes
 		
 	}
 	
@@ -116,9 +121,21 @@ public class HomeControllerNoDao {
 	
 	/*delete a student */
 	@GetMapping("/deleteStudent")
-	public String deleteStudent() {
+	public String deleteStudent(@RequestParam("userId") int id) {
 		
-		return "confirm";
+		
+		//call the delete service call
+		DaoServiceImpl.deleteStudent(id);
+		
+		//call truncateTable to restart student id if all get deleted
+		int numOfRows = DaoHelperServiceImpl.getNumOfRecords();
+		if(numOfRows == 0) {
+			//call the dao to truncate the table, so we can re-start the id
+			DaoHelperServiceImpl.truncateTable();
+		}
+		
+		
+		return "redirect:/"; //redirect to url not page name
 	}
 	
 	

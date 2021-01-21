@@ -15,6 +15,10 @@ public interface Dao {
 	public int addStudent(StudentDto student); 
 
 	int updateStudent(Student student);
+
+	public int deleteStudent(int id);
+	
+	
 	
 	
 	

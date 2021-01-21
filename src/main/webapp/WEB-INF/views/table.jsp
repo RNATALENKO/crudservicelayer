@@ -28,11 +28,12 @@
 		<form:form>
 		<c:forEach var="student" items="${studentList}">
 		<tr>
-			<td style="padding:30px; border:1px solid black;">${student.id}</td>
-			<td style="padding:30px; border:1px solid black;">${student.name}</td>
-			<td style="padding:30px; border:1px solid black;">${student.school}</td>
+			<td style="padding:30px; border:1px solid black; min-width:125px;">${student.id}</td>
+			<td style="padding:30px; border:1px solid black;min-width:125px;">${student.name}</td>
+			<td style="padding:30px; border:1px solid black;min-width:125px;">${student.school}</td>
 			<td style="padding:30px;"><a href="http://localhost:8080/SpringJDBCmaincrud/updateStudent?userId=${student.id}" >update</a><td>
-			<td style="padding:30px;"><a>delete</a><td>
+			<td style="padding:30px;"><a onclick="if (!confirm('Delete listing?')){return false} else {return true}" href="http://localhost:8080/SpringJDBCmaincrud/deleteStudent?userId=${student.id}">delete</a></td> <!-- the onlick opens a dialogue box, but notice it still cancels, we must cancel the operation by returning false-->
+			
 		</tr>	
 		</c:forEach>
 		

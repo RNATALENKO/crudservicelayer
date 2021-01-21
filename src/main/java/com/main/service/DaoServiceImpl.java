@@ -68,6 +68,16 @@ public class DaoServiceImpl implements DaoService {
 		return updatedRecords;
 	}
 
+	@Override
+	public int deleteStudent(int id) {
+		
+		
+		int deletedRecords = dao.deleteStudent(id);
+		
+		return deletedRecords; 
+		
+	}
+
 
 	
 }

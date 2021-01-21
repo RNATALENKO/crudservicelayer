@@ -16,6 +16,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.main.dao.Dao;
 import com.main.dao.DaoImpl;
+import com.main.daohelper.DaoHelper;
+import com.main.daohelper.DaoHelperImpl;
+import com.main.daohelperservice.DaoHelperService;
+import com.main.daohelperservice.DaoHelperServiceImpl;
 import com.main.service.DaoService;
 import com.main.service.DaoServiceImpl;
 
@@ -56,14 +60,30 @@ public class Config implements WebMvcConfigurer {
 		return template; 
 	}
 	
+	
+	//if you get bean factory errors, check name of bean method, and type must be the exact object
+	
 	@Bean 
 	public DaoImpl daoImpl() {
 		return new DaoImpl(); 
 	}
 	
+	
+
+	/*for the helper methods */ 
+	
 	@Bean
-	public DaoService daoServiceImpl() {
-		return new DaoServiceImpl(); 
+	public DaoHelperImpl daoHelperImpl() {
+		return new DaoHelperImpl(); 
 	}
+	
+
+	@Bean
+	public DaoHelperServiceImpl DaoHelperServiceImpl() {
+		return new DaoHelperServiceImpl(); 
+	}
+	
+	
+	
 
 }

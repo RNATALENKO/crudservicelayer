@@ -57,6 +57,17 @@ public class DaoImpl implements Dao {
 	}
 
 
+	@Override
+	public int deleteStudent(int id) {
+		
+		String sqlString = "DELETE FROM info.students WHERE id=?";
+		
+		int deletedRecords = JdbcTemplate.update(sqlString, id);
+		
+		return deletedRecords;
+	}
+
+
 
 
 
